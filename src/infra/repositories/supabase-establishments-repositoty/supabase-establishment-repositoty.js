@@ -3,13 +3,15 @@ class SupabaseEstablishmentRepository {
   async create(establishment) {
     const { data, error } = await supabase
       .from("establishments")
-      .insert([establishment]);
+      .insert([establishment])
+      .select("*")
+      .single();
 
     if (error) {
       throw new Error(error.message);
     }
 
-    return data[0];
+    return data;
   }
 
   async findAllByUserId(userId) {

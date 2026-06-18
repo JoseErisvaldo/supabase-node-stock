@@ -20,11 +20,5 @@ CREATE INDEX IF NOT EXISTS idx_establishments_status ON establishments(status);
 
 ALTER TABLE establishments ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "no direct access"
-ON establishments
-FOR ALL
-USING (false)
-WITH CHECK (false);
-
 CREATE TRIGGER update_establishments_updated_at BEFORE UPDATE ON establishments
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
