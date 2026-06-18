@@ -13,12 +13,6 @@ CREATE INDEX IF NOT EXISTS idx_categories_user_id ON categories(user_id);
 
 ALTER TABLE categories ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "no direct access"
-ON categories
-FOR ALL
-USING (false)
-WITH CHECK (false);
-
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$
 BEGIN
